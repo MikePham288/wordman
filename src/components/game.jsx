@@ -4,7 +4,7 @@ import ColorSwatch from './color-swatch';
 import GameInput from './game-input';
 import GameStatus from './game-status';
 
-const Game = () => {
+const Game = ({children}) => {
   const [colorGuess, setColorGuess] = useState('');
   const [correctAnswer, setCorrectAnswer] = useState(generateRandomColor());
   const [hasGuessed, setHasGuessed] = useState(false);
@@ -26,6 +26,7 @@ const Game = () => {
         disabled={hasGuessed}
       />
       <GameStatus isWinner={isWinner} hasGuessed={hasGuessed} />
+      {children}
       <button
         onClick={() => {
           setCorrectAnswer(generateRandomColor());
